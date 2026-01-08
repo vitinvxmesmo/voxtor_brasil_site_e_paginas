@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Entre em contato com a Voxtor Brasil e solicite uma proposta">
+    <title>Contato | Voxtor Brasil</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.png" alt="Voxtor Brasil Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="logo-text">VOXTOR</span>
+                </a>
+                
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="solucoes.html">Soluções</a></li>
+                    <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="cases.html">Cases</a></li>
+                    <li><a href="contato.html" class="active">Contato</a></li>
+                    <li><button id="theme-toggle" class="theme-btn" aria-label="Toggle dark mode">🌙</button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Entre em <span class="highlight">Contato</span></h1>
+            <p>Estamos prontos para impulsionar sua transformação digital</p>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-wrapper">
+                
+                <!-- INFORMAÇÕES DE CONTATO -->
+                <div class="contact-info">
+                    <h2>Fale Conosco</h2>
+                    <p>Preencha o formulário ao lado ou entre em contato pelos nossos canais:</p>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-details">
+                            <h3>E-mail</h3>
+                            <p>voxtorbrasil@gmx.com</p>
+                            <p>victoroliveira@gmx.us</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-details">
+                            <h3>Telefone / WhatsApp</h3>
+                            <p>(38) 99874-9856</p>
+                            <p>(38) 99757-9507</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h3>Endereço</h3>
+                            <p>R. Assunção, 112 - Unaí MG</p>
+                            <p>CEP 38612-086</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">⏰</div>
+                        <div class="contact-details">
+                            <h3>Horário de Atendimento</h3>
+                            <p>Segunda a Sexta: 9h às 17h</p>
+                            <p>Suporte 24/7 para clientes cadastrados</p>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <h3>Redes Sociais</h3>
+                        <div class="social-icons">
+                            <a href="#" aria-label="LinkedIn">🔗 LinkedIn</a>
+                            <a href="#" aria-label="Instagram">📸 Instagram</a>
+                            <a href="#" aria-label="Facebook">👍 Facebook</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FORMULÁRIO -->
+                <div class="contact-form-container">
+                    <h2>Solicite uma Proposta</h2>
+                    <p class="form-intro">Preencha os dados abaixo e nossa equipe entrará em contato em até 24 horas úteis.</p>
+                    
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="nome">Nome Completo *</label>
+                            <input type="text" id="nome" name="nome" required placeholder="Seu nome">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="empresa">Empresa</label>
+                            <input type="text" id="empresa" name="empresa" placeholder="Nome da empresa (opcional)">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">E-mail *</label>
+                                <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="telefone">Telefone *</label>
+                                <input type="tel" id="telefone" name="telefone" required placeholder="(00) 00000-0000">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="solucao">Tipo de Solução *</label>
+                            <select id="solucao" name="solucao" required>
+                                <option value="">Selecione uma opção</option>
+                                <option value="consultoria">Consultoria em TI</option>
+                                <option value="suporte">Suporte Técnico</option>
+                                <option value="automacao">Automação & IoT</option>
+                                <option value="infraestrutura">Infraestrutura</option>
+                                <option value="produtos">Venda de Equipamentos</option>
+                                <option value="bi">Business Intelligence</option>
+                                <option value="multiplas">Múltiplas Soluções</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mensagem">Mensagem *</label>
+                            <textarea id="mensagem" name="mensagem" required rows="5" placeholder="Descreva seu projeto ou necessidade..."></textarea>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <label>
+                                <input type="checkbox" id="privacidade" name="privacidade" required>
+                                <span>Aceito a <a href="#">Política de Privacidade</a> e autorizo o contato da Voxtor Brasil</span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+                            Enviar Solicitação
+                        </button>
+
+                        <!-- MENSAGENS DE FEEDBACK -->
+                        <div id="formMessage" class="form-message" style="display: none;"></div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MAPA (PLACEHOLDER) -->
+    <section class="map-section">
+        <div class="container">
+            <div class="map-placeholder">
+                <div class="map-content">
+                    <h3>📍 Nossa Localização</h3>
+                    <p>R. Assunção, 112 - Unaí MG</p>
+                    <p class="map-note"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3828.3458470851037!2d-46.88791552396815!3d-16.356335437044965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9357ab8227839e33%3A0x9a7b3a235a585941!2sVOXTOR%20BR!5e0!3m2!1spt-PT!2spt!4v1767794459174!5m2!1spt-PT!2spt" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ RÁPIDO -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Perguntas <span class="highlight">Frequentes</span></h2>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>Qual o prazo médio de resposta?</h3>
+                    <p>Respondemos todas as solicitações em até 24 horas úteis. Para urgências, utilize nosso WhatsApp comercial.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Atendem todo Brasil?</h3>
+                    <p>Sim! Nossa sede é em Brasília, mas atendemos clientes em todo território nacional com suporte remoto e visitas presenciais quando necessário.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Como funciona o orçamento?</h3>
+                    <p>Após o contato inicial, agendamos uma reunião (presencial ou online) para entender suas necessidades e elaboramos uma proposta personalizada sem compromisso.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Trabalham com pequenas empresas?</h3>
+                    <p>Sim! Atendemos desde microempresas até grandes corporações. Temos soluções escaláveis para cada porte e orçamento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Prefere conversar diretamente?</h2>
+                <p>Ligue ou envie mensagem no WhatsApp</p>
+                <a href="https://wa.me/5538998749856" class="btn btn-primary btn-lg" target="_blank">💬 Chamar no WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Voxtor Brasil</h4>
+                    <p>Hub de tecnologia especializado em soluções corporativas completas</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Soluções</h4>
+                    <ul>
+                        <li><a href="solucoes.html#consultoria">Consultoria TI</a></li>
+                        <li><a href="solucoes.html#suporte">Suporte Técnico</a></li>
+                        <li><a href="solucoes.html#automacao">Automação</a></li>
+                        <li><a href="solucoes.html#infraestrutura">Infraestrutura</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="cases.html">Cases de Sucesso</a></li>
+                        <li><a href="produtos.html">Produtos</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li>📧 voxtorbrasil@gmx.com</li>
+                        <li>📱 (38) 99874-9856</li>
+                        <li>📍 Unaí - MG</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Voxtor Brasil. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/form.js"></script>
+</body>
+</html>
