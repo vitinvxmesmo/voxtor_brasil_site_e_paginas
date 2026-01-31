@@ -9,32 +9,33 @@
 </head>
 <body>
     <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-wrapper">
-                <a href="index.html" class="logo">
-                    <img src="assets/logo.png" alt="Voxtor Brasil Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="logo-text">VOXTOR</span>
-                </a>
-                
-                <button class="menu-toggle" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+<nav class="navbar" role="navigation">
+  <div class="container">
+    <div class="nav-wrapper">
 
-                <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="sobre.html" class="active">Sobre</a></li>
-                    <li><a href="solucoes.html">Soluções</a></li>
-                    <li><a href="produtos.html">Produtos</a></li>
-                    <li><a href="cases.html">Cases</a></li>
-                    <li><a href="contato.html">Contato</a></li>
-                    <li><button id="theme-toggle" class="theme-btn" aria-label="Toggle dark mode">🌙</button></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+      <a href="index.html" class="logo" aria-label="Voxtor Brasil - Página Inicial">
+        <span class="logo-shadow"></span>
+        <img src="assets/logo.png" alt="Voxtor Brasil Logo">
+      </a>
+
+      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-menu" role="menubar">
+        <li><a href="index.html" class="active" role="menuitem">Home</a></li>
+        <li><a href="sobre.html" role="menuitem">Sobre</a></li>
+        <li><a href="solucoes.html" role="menuitem">Soluções</a></li>
+        <li><a href="produtos.html" role="menuitem">Produtos</a></li>
+        <li><a href="cases.html" role="menuitem">Cases</a></li>
+        <li><a href="contato.html" role="menuitem">Contato</a></li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
 
     <!-- PAGE HERO -->
     <section class="page-hero">
@@ -51,12 +52,12 @@
                 <h2>Nosso Manifesto</h2>
                 <p class="manifesto-text">
                     Acreditamos que tecnologia, design e atitude constroem mais do que produtos — constroem experiências.
-Valorizamos a inovação com propósito, a qualidade em cada detalhe e a evolução constante.
-Não seguimos padrões por conveniência; criamos soluções por convicção.
+                    Valorizamos a inovação com propósito, a qualidade em cada detalhe e a evolução constante.
+                    Não seguimos padrões por conveniência; criamos soluções por convicção.
                 </p>
                 <p class="manifesto-text">
-                   Somos movidos por excelência, confiança e visão de futuro.
-Aqui, cada projeto é tratado com seriedade, identidade e compromisso real com resultados.
+                    Somos movidos por excelência, confiança e visão de futuro.
+                    Aqui, cada projeto é tratado com seriedade, identidade e compromisso real com resultados.
                 </p>
             </div>
         </div>
@@ -70,8 +71,8 @@ Aqui, cada projeto é tratado com seriedade, identidade e compromisso real com r
                     <h2>Nossa <span class="highlight">História</span></h2>
                     <p>
                         Nossa história começa com a vontade de fazer diferente.
-De transformar conhecimento técnico em soluções reais, simples e eficientes.
-Ao longo do tempo, evoluímos, aprendemos e nos adaptamos, mantendo sempre o foco em entregar valor, profissionalismo e credibilidade.
+                        De transformar conhecimento técnico em soluções reais, simples e eficientes.
+                        Ao longo do tempo, evoluímos, aprendemos e nos adaptamos, mantendo sempre o foco em entregar valor, profissionalismo e credibilidade.
                     </p>
                     <p>
                         Cada passo foi construído com dedicação, aprendizado contínuo e respeito por quem confia no nosso trabalho.
@@ -82,8 +83,8 @@ Ao longo do tempo, evoluímos, aprendemos e nos adaptamos, mantendo sempre o foc
                 </div>
                 <div class="history-image">
                     <div class="placeholder-image">
-                        <span>📚</span>
-                        <p>Nossa Trajetória</p>
+                        <img src="img/nossa_historia.png" alt="Nossa Trajetória">
+                        <p>Estamos aqui</p>
                     </div>
                 </div>
             </div>
@@ -251,11 +252,11 @@ Ao longo do tempo, evoluímos, aprendemos e nos adaptamos, mantendo sempre o foc
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Voxtor Brasil. Todos os direitos reservados.</p>
+                <p>&copy; <span class="current-year">2024</span> Voxtor Brasil. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <script src="js/form.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

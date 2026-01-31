@@ -9,33 +9,33 @@
 </head>
 <body>
     <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-wrapper">
-                <a href="index.html" class="logo">
-                    <img src="assets/logo.png" alt="Voxtor Brasil Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="logo-text">VOXTOR</span>
-                </a>
-                
-                <button class="menu-toggle" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+ <nav class="navbar" role="navigation">
+  <div class="container">
+    <div class="nav-wrapper">
 
-                <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="sobre.html">Sobre</a></li>
-                    <li><a href="solucoes.html" class="active">Soluções</a></li>
-                    <li><a href="produtos.html">Produtos</a></li>
-                    <li><a href="cases.html">Cases</a></li>
-                    <li><a href="contato.html">Contato</a></li>
-                    <li><button id="theme-toggle" class="theme-btn" aria-label="Toggle dark mode">🌙</button></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+      <a href="index.html" class="logo" aria-label="Voxtor Brasil - Página Inicial">
+        <span class="logo-shadow"></span>
+        <img src="assets/logo.png" alt="Voxtor Brasil Logo">
+      </a>
 
+      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-menu" role="menubar">
+        <li><a href="index.html" class="active" role="menuitem">Home</a></li>
+        <li><a href="sobre.html" role="menuitem">Sobre</a></li>
+        <li><a href="solucoes.html" role="menuitem">Soluções</a></li>
+        <li><a href="produtos.html" role="menuitem">Produtos</a></li>
+        <li><a href="cases.html" role="menuitem">Cases</a></li>
+        <li><a href="contato.html" role="menuitem">Contato</a></li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
     <!-- PAGE HERO -->
     <section class="page-hero">
         <div class="container">
@@ -76,9 +76,10 @@
 
                     <a href="contato.html" class="btn btn-primary">Solicitar Consultoria</a>
                 </div>
+                
                 <div class="solution-image">
                     <div class="placeholder-image">
-                        <span>💼</span>
+                        <img src="https://compuworks.pt/wp-content/uploads/2023/05/consultores-auditoria-1-cw.webp" alt="Consultoria em TI">
                         <p>Consultoria Estratégica</p>
                     </div>
                 </div>
@@ -92,10 +93,11 @@
             <div class="solution-content reverse">
                 <div class="solution-image">
                     <div class="placeholder-image">
-                        <span>🔧</span>
+                        <img src="https://interop.com.br/wp-content/uploads/2021/01/blog-content-bt-1.jpg" alt="Suporte Técnico">
                         <p>Suporte 24/7</p>
                     </div>
                 </div>
+                
                 <div class="solution-text">
                     <div class="solution-badge">🔧 Suporte</div>
                     <h2>Suporte Técnico Especializado</h2>
@@ -173,9 +175,10 @@
 
                     <a href="contato.html" class="btn btn-primary">Conhecer Soluções IoT</a>
                 </div>
+                
                 <div class="solution-image">
                     <div class="placeholder-image">
-                        <span>🤖</span>
+                        <img src="https://www.binario.net/wp-content/uploads/2020/09/WhatsApp-Image-2020-09-30-at-13.52.56.jpeg" alt="Automação e IoT">
                         <p>Automação Inteligente</p>
                     </div>
                 </div>
@@ -189,10 +192,11 @@
             <div class="solution-content reverse">
                 <div class="solution-image">
                     <div class="placeholder-image">
-                        <span>🏢</span>
+                        <img src="https://www.avivatec.com.br/wp-content/uploads/2020/01/original-2862828ce3d997d8786078a66942ea9c.jpeg" alt="Infraestrutura de TI">
                         <p>Infraestrutura Robusta</p>
                     </div>
                 </div>
+                
                 <div class="solution-text">
                     <div class="solution-badge">🏢 Infraestrutura</div>
                     <h2>Infraestrutura de TI</h2>
@@ -257,9 +261,10 @@
 
                     <a href="contato.html" class="btn btn-primary">Implementar BI</a>
                 </div>
+                
                 <div class="solution-image">
                     <div class="placeholder-image">
-                        <span>📊</span>
+                        <img src="https://bidar.ca/wp-content/uploads/2025/02/intelligence-bi-and-business-analytics-ba-with-key-performance-indicators-kpi-dashboard-concept-website-designer-working-digital-tablet-and-smart-phone-photo-1024x576.jpg" alt="Business Intelligence">
                         <p>Inteligência de Dados</p>
                     </div>
                 </div>
@@ -314,11 +319,11 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Voxtor Brasil. Todos os direitos reservados.</p>
+                <p>&copy; <span class="current-year">2024</span> Voxtor Brasil. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <script src="js/form.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

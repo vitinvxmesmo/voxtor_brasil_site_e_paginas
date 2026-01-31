@@ -1,420 +1,313 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cases de sucesso e resultados comprovados da Voxtor Brasil">
-    <title>Cases de Sucesso | Voxtor Brasil</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cases de sucesso reais da Voxtor Brasil em consultoria de TI, infraestrutura, CRM e soluções corporativas." />
+  <title>Cases de Sucesso | Voxtor Brasil</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-wrapper">
-                <a href="index.html" class="logo">
-                    <img src="assets/logo.png" alt="Voxtor Brasil Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="logo-text">VOXTOR</span>
-                </a>
-                
-                <button class="menu-toggle" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
 
-                <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="sobre.html">Sobre</a></li>
-                    <li><a href="solucoes.html">Soluções</a></li>
-                    <li><a href="produtos.html">Produtos</a></li>
-                    <li><a href="cases.html" class="active">Cases</a></li>
-                    <li><a href="contato.html">Contato</a></li>
-                    <li><button id="theme-toggle" class="theme-btn" aria-label="Toggle dark mode">🌙</button></li>
-                </ul>
-            </div>
+  <!-- NAVBAR -->
+<nav class="navbar" role="navigation">
+  <div class="container">
+    <div class="nav-wrapper">
+
+      <a href="index.html" class="logo" aria-label="Voxtor Brasil - Página Inicial">
+        <span class="logo-shadow"></span>
+        <img src="assets/logo.png" alt="Voxtor Brasil Logo">
+      </a>
+
+      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-menu" role="menubar">
+        <li><a href="index.html" class="active" role="menuitem">Home</a></li>
+        <li><a href="sobre.html" role="menuitem">Sobre</a></li>
+        <li><a href="solucoes.html" role="menuitem">Soluções</a></li>
+        <li><a href="produtos.html" role="menuitem">Produtos</a></li>
+        <li><a href="cases.html" role="menuitem">Cases</a></li>
+        <li><a href="contato.html" role="menuitem">Contato</a></li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Cases de <span class="highlight">Sucesso</span></h1>
+      <p>Projetos reais, clientes reais e resultados concretos</p>
+    </div>
+  </section>
+
+  <!-- CASES -->
+  <section class="cases-section">
+    <div class="container">
+
+      <!-- DISCOVERY IDIOMAS -->
+      <div class="case-card">
+        <div class="case-header">
+          <div class="case-industry">Educação</div>
+          <h2>Discovery Idiomas – Porto Seguro / BA</h2>
         </div>
-    </nav>
 
-    <!-- PAGE HERO -->
-    <section class="page-hero">
-        <div class="container">
-            <h1>Cases de <span class="highlight">Sucesso</span></h1>
-            <p>Resultados reais que transformaram negócios</p>
-        </div>
-    </section>
+        <div class="case-content">
+          <div class="case-description">
+            <h3>Contexto</h3>
+            <p>
+              Escola tradicional de idiomas fundada e dirigida por
+              <strong>José Marcos</strong>, professor de inglês com mais de 40 anos
+              de experiência, ex-professor do <strong>British Council Brasil</strong>,
+              com anos de atuação profissional no Reino Unido.
+            </p>
 
-    <!-- CASES GRID -->
-    <section class="cases-section">
-        <div class="container">
+            <h3>Desafio</h3>
+            <p>
+              A instituição sofria com instabilidade de rede, falhas em equipamentos
+              e ausência de suporte técnico contínuo, impactando diretamente a qualidade
+              das aulas.
+            </p>
+
+            <h3>Solução</h3>
+            <ul>
+              <li>Consultoria completa em TI</li>
+              <li>Reestruturação da rede local</li>
+              <li>Padronização de computadores</li>
+              <li>Suporte técnico recorrente</li>
+            </ul>
             
-            <!-- CASE 1 - INDÚSTRIA -->
-            <div class="case-card">
-                <div class="case-header">
-                    <div class="case-industry">🏭 Indústria</div>
-                    <h2>Modernização Completa de Infraestrutura</h2>
-                </div>
-                <div class="case-content">
-                    <div class="case-description">
-                        <h3>O Desafio</h3>
-                        <p>
-                            Indústria metalúrgica de médio porte enfrentava constantes paradas não 
-                            planejadas devido a falhas de hardware legado, servidores físicos sem 
-                            redundância e falta de backup estruturado. O sistema ERP crítico ficava 
-                            indisponível frequentemente, gerando prejuízos operacionais.
-                        </p>
-
-                        <h3>A Solução</h3>
-                        <ul>
-                            <li>Virtualização completa com VMware vSphere</li>
-                            <li>Cluster de 3 servidores Dell PowerEdge com alta disponibilidade</li>
-                            <li>Storage SAN de 20TB com RAID 10</li>
-                            <li>Sistema de backup automatizado com replicação offsite</li>
-                            <li>Reestruturação da rede com switches gerenciáveis</li>
-                            <li>Implementação de firewall Fortinet com políticas de segurança</li>
-                        </ul>
-
-                        <h3>Prazo de Execução</h3>
-                        <p>45 dias - Implementação faseada sem parar a produção</p>
-                    </div>
-
-                    <div class="case-results">
-                        <h3>Resultados</h3>
-                        <div class="results-grid">
-                            <div class="result-item">
-                                <div class="result-number">99.8%</div>
-                                <div class="result-label">Disponibilidade do ERP</div>
-                            </div>
-                            <div class="result-item">
-                                <div class="result-number">85%</div>
-                                <div class="result-label">Redução em paradas não planejadas</div>
-                            </div>
-                            <div class="result-item">
-                                <div class="result-number">60%</div>
-                                <div class="result-label">Diminuição no tempo de backup</div>
-                            </div>
-                            <div class="result-item">
-                                <div class="result-number">ROI 14 meses</div>
-                                <div class="result-label">Retorno do investimento</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="case-cta">
+              <a href="contato.html" class="btn btn-case">
+                Quero um projeto assim
+              </a>
             </div>
+          </div>
 
-            <!-- CASE 2 - VAREJO -->
-            <div class="case-card">
-                <div class="case-header">
-                    <div class="case-industry">🛒 Varejo</div>
-                    <h2>Automação e Integração Omnichannel</h2>
-                </div>
-                <div class="case-content">
-                    <div class="case-description">
-                        <h3>O Desafio</h3>
-                        <p>
-                            Rede de varejo com 12 lojas físicas e e-commerce enfrentava 
-                            dessincronia de estoque, processos manuais demorados e falta de 
-                            visibilidade gerencial. Cada loja operava de forma isolada, gerando 
-                            inconsistências e perda de vendas.
-                        </p>
-
-                        <h3>A Solução</h3>
-                        <ul>
-                            <li>Implementação de ERP integrado (Omie) para todas as unidades</li>
-                            <li>Sistema de PDV cloud com sincronização em tempo real</li>
-                            <li>Integração com marketplace (Mercado Livre, B2W)</li>
-                            <li>Automação de processos com RPA para emissão de notas e boletos</li>
-                            <li>Dashboard BI com Power BI para análise de vendas</li>
-                            <li>Conectividade MPLS entre lojas e matriz</li>
-                        </ul>
-
-                        <h3>Prazo de Execução</h3>
-                        <p>3 meses - Rollout progressivo por loja</p>
-                    </div>
-
-                    <div class="case-results">
-                        <h3>Resultados</h3>
-                        <div class="results-grid">
-                            <div class="result-item">
-                                <div class="result-number">100%</div>
-                                <div class="result-label">Acurácia de estoque</div>
-                            </div>
-                            <div class="result-item">
-                                <div class="result-number">35%</div>
-                                <div class="result-label">Aumento nas vendas online</div>
-                            </div>
-                            <div class="result-item">
-                                <div class="result-number">70%</div>
-                                <div class="result-label">Redução em processos manuais</div>
-                            </div>
-                            <div class="result-item">
-                                <div class="result-number">4h → 20min</div>
-                                <div class="result-label">Tempo de fechamento diário</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          <div class="case-results">
+            <h3>Resultados</h3>
+            <div class="results-grid">
+              <div class="result-item">
+                <div class="result-number">100%</div>
+                <div class="result-label">Estabilidade nas aulas</div>
+              </div>
+              <div class="result-item">
+                <div class="result-number">0</div>
+                <div class="result-label">Paradas críticas</div>
+              </div>
             </div>
-
-            <!-- CASE 3 - ESCRITÓRIO DE ADVOCACIA -->
-            <div class="case-card">
-                <div class="case-header">
-                    <div class="case-industry">⚖️ Serviços Jurídicos</div>
-                    <h2>Cloud Migration e Segurança de Dados</h2>
-                </div>
-                <div class="case-content">
-                    <div class="case-description">
-                        <h3>O Desafio</h3>
-                        <p>
-                            Escritório de advocacia com 45 colaboradores mantinha toda infraestrutura 
-                            on-premise com alto custo operacional. Enfrentava dificuldades com trabalho 
-                            remoto, backup manual de documentos críticos e preocupações com LGPD.
-                        </p>
-
-                        <h3>A Solução</h3>
-                        <ul>
-                            <li>Migração completa para Microsoft 365 E3</li>
-                            <li>Migração de file server para SharePoint Online</li>
-                            <li>Implementação de Azure AD com autenticação multifator</li>
-                            <li>Sistema jurídico (Projuris) em cloud AWS</li>
-                            <li>VPN corporativa com acesso seguro</li>
-                            <li>Backup automático com Azure Backup</li>
-                            <li>Consultoria LGPD e adequação de processos</li>
-                        </ul>
-
-                        <h3>Prazo de Execução</h3>
-                        <p>2 meses - Migração gradual com treinamentos semanais</p>
-                    </div>
-
-                    <div class="case-results">
-                        <h3>Resultados</h3>
-                        <div class="results-grid">
-                            <div class="result-item">
-                                <div class="result-number">50%</div>
-                                <div class="result-label">Redução em custos de TI</div>
-                            </div>
-                            <div class="result-item">
-                                <div class="result-number">100%</div>
-                                <div class="result-label">Colaboradores em home office</div>
-                            </div>
-                            <div class="result-item">
-                                <div class="result-number">Zero</div>
-                                <div class="result-label">Perda de documentos</div>
-                            </div>
-                            <div class="result-item">
-                                <div class="result-number">LGPD</div>
-                                <div class="result-label">100% conforme</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CASE 4 - CLÍNICA MÉDICA -->
-            <div class="case-card">
-                <div class="case-header">
-                    <div class="case-industry">🏥 Saúde</div>
-                    <h2>Prontuário Eletrônico e Infraestrutura Segura</h2>
-                </div>
-                <div class="case-content">
-                    <div class="case-description">
-                        <h3>O Desafio</h3>
-                        <p>
-                            Clínica com 5 especialidades e 20 médicos operava com prontuários em 
-                            papel, agendamento manual e falta de histórico estruturado de pacientes. 
-                            Necessitava adequação à legislação de dados sensíveis de saúde.
-                        </p>
-
-                        <h3>A Solução</h3>
-                        <ul>
-                            <li>Implementação de sistema PEP (Prontuário Eletrônico)</li>
-                            <li>Servidor dedicado com segurança reforçada</li>
-                            <li>Backup diário com retenção de 7 anos (exigência legal)</li>
-                            <li>Rede segregada com VLAN para dados de pacientes</li>
-                            <li>Sistema de agendamento online integrado</li>
-                            <li>Digitalização de 15 mil prontuários legados</li>
-                            <li>Treinamento completo da equipe médica e administrativa</li>
-                        </ul>
-
-                        <h3>Prazo de Execução</h3>
-                        <p>4 meses - Incluindo digitalização de prontuários antigos</p>
-                    </div>
-
-                    <div class="case-results">
-                        <h3>Resultados</h3>
-                        <div class="results-grid">
-                            <div class="result-item">
-                                <div class="result-number">40%</div>
-                                <div class="result-label">Mais agendamentos</div>
-                            </div>
-                            <div class="result-item">
-                                <div class="result-number">90%</div>
-                                <div class="result-label">Redução em papel</div>
-                            </div>
-                            <div class="result-item">
-                                <div class="result-number">3min</div>
-                                <div class="result-label">Tempo médio de consulta ao histórico</div>
-                            </div>
-                            <div class="result-item">
-                                <div class="result-number">100%</div>
-                                <div class="result-label">Conformidade legal (CFM)</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CASE 5 - DISTRIBUIDOR -->
-            <div class="case-card">
-                <div class="case-header">
-                    <div class="case-industry">📦 Logística</div>
-                    <h2>Rastreamento IoT e Otimização de Frota</h2>
-                </div>
-                <div class="case-content">
-                    <div class="case-description">
-                        <h3>O Desafio</h3>
-                        <p>
-                            Distribuidora com frota de 25 veículos não tinha visibilidade sobre 
-                            entregas em tempo real, enfrentava desvios de rota e alto consumo de 
-                            combustível. Clientes reclamavam de falta de previsibilidade.
-                        </p>
-
-                        <h3>A Solução</h3>
-                        <ul>
-                            <li>Instalação de rastreadores GPS em toda frota</li>
-                            <li>Sensores de temperatura para carga refrigerada</li>
-                            <li>Plataforma de gestão de frota com roteirização inteligente</li>
-                            <li>App mobile para motoristas com checklist digital</li>
-                            <li>Dashboard gerencial com alertas de desvio</li>
-                            <li>Integração com sistema de gestão (TOTVS)</li>
-                        </ul>
-
-                        <h3>Prazo de Execução</h3>
-                        <p>1 mês - Implementação rápida com instalação veicular</p>
-                    </div>
-
-                    <div class="case-results">
-                        <h3>Resultados</h3>
-                        <div class="results-grid">
-                            <div class="result-item">
-                                <div class="result-number">28%</div>
-                                <div class="result-label">Redução em combustível</div>
-                            </div>
-                            <div class="result-item">
-                                <div class="result-number">45%</div>
-                                <div class="result-label">Aumento em entregas/dia</div>
-                            </div>
-                            <div class="result-item">
-                                <div class="result-number">92%</div>
-                                <div class="result-label">Satisfação dos clientes</div>
-                            </div>
-                            <div class="result-item">
-                                <div class="result-number">Zero</div>
-                                <div class="result-label">Perdas por temperatura</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- DEPOIMENTOS -->
-    <section class="testimonials-section">
-        <div class="container">
-            <h2>O que nossos <span class="highlight">Clientes</span> dizem</h2>
+      <!-- ESCOLA MUNICIPAL -->
+      <div class="case-card">
+        <div class="case-header">
+          <div class="case-industry">Educação Pública</div>
+          <h2>Escola Municipal Profª Glória Moreira</h2>
+        </div>
+
+        <div class="case-content">
+          <div class="case-description">
+            <h3>Contexto</h3>
+            <p>
+              Escola municipal que necessitava modernizar sua infraestrutura tecnológica,
+              sob supervisão direta da <strong>Diretora Deise</strong>.
+            </p>
+
+            <h3>Solução</h3>
+            <ul>
+              <li>Implementação do sistema de sirene escolar</li>
+              <li>Configuração completa da rede interna</li>
+              <li>Padronização de pontos de acesso</li>
+            </ul>
             
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "A Voxtor transformou nossa operação. Saímos de apagar incêndios diariamente 
-                        para ter uma infraestrutura confiável e escalável. O suporte deles é 
-                        excepcional."
-                    </div>
-                    <div class="testimonial-author">
-                        <strong>Carlos Mendes</strong>
-                        <span>Diretor de TI - Indústria Metalúrgica</span>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "Finalmente conseguimos integrar todas nossas lojas e ter visão real do 
-                        negócio. A consultoria foi precisa e o resultado superou expectativas."
-                    </div>
-                    <div class="testimonial-author">
-                        <strong>Ana Paula Costa</strong>
-                        <span>CEO - Rede de Varejo</span>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "A migração para cloud foi mais tranquila do que imaginávamos. Hoje trabalhamos 
-                        de qualquer lugar com total segurança. Recomendamos fortemente."
-                    </div>
-                    <div class="testimonial-author">
-                        <strong>Dr. Roberto Silva</strong>
-                        <span>Sócio - Escritório de Advocacia</span>
-                    </div>
-                </div>
+            <div class="case-cta">
+              <a href="contato.html" class="btn btn-case">
+                Quero um projeto assim
+              </a>
             </div>
+          </div>
+
+          <div class="case-results">
+            <h3>Resultados</h3>
+            <div class="results-grid">
+              <div class="result-item">
+                <div class="result-number">100%</div>
+                <div class="result-label">Funcionamento automatizado</div>
+              </div>
+              <div class="result-item">
+                <div class="result-number">0</div>
+                <div class="result-label">Falhas operacionais</div>
+              </div>
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- CTA SECTION -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Pronto para ser nosso próximo caso de sucesso?</h2>
-                <p>Vamos conversar sobre os desafios da sua empresa</p>
-                <a href="contato.html" class="btn btn-primary btn-lg">Agendar Reunião</a>
-            </div>
+      <!-- ADVOCACIA -->
+      <div class="case-card">
+        <div class="case-header">
+          <div class="case-industry">Jurídico</div>
+          <h2>Fontanelli Advocacia</h2>
         </div>
-    </section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>Voxtor Brasil</h4>
-                    <p>Hub de tecnologia especializado em soluções corporativas completas</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Soluções</h4>
-                    <ul>
-                        <li><a href="solucoes.html#consultoria">Consultoria TI</a></li>
-                        <li><a href="solucoes.html#suporte">Suporte Técnico</a></li>
-                        <li><a href="solucoes.html#automacao">Automação</a></li>
-                        <li><a href="solucoes.html#infraestrutura">Infraestrutura</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Empresa</h4>
-                    <ul>
-                        <li><a href="sobre.html">Sobre Nós</a></li>
-                        <li><a href="cases.html">Cases de Sucesso</a></li>
-                        <li><a href="produtos.html">Produtos</a></li>
-                        <li><a href="contato.html">Contato</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Contato</h4>
-                    <ul>
-                        <li>📧 voxtorbrasil@gmx.com</li>
-                        <li>📱 (38) 99874-9856</li>
-                        <li>📍 Unaí - MG</li>
-                    </ul>
-                </div>
+        <div class="case-content">
+          <div class="case-description">
+            <h3>Contexto</h3>
+            <p>
+              Escritório liderado pela <strong>Dra. Kassiary Fontanelli</strong> e
+              advogados associados, com contrato de suporte técnico
+              <strong>nível Prata</strong>.
+            </p>
+
+            <h3>Solução</h3>
+            <ul>
+              <li>Suporte técnico contínuo</li>
+              <li>Manutenção preventiva e corretiva</li>
+              <li>Atendimento rápido para demandas críticas</li>
+            </ul>
+            
+            <div class="case-cta">
+              <a href="contato.html" class="btn btn-case">
+                Quero um projeto assim
+              </a>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Voxtor Brasil. Todos os direitos reservados.</p>
+          </div>
+
+          <div class="case-results">
+            <h3>Resultados</h3>
+            <div class="results-grid">
+              <div class="result-item">
+                <div class="result-number">Alta</div>
+                <div class="result-label">Satisfação do cliente</div>
+              </div>
+              <div class="result-item">
+                <div class="result-number">Ativo</div>
+                <div class="result-label">Contrato contínuo</div>
+              </div>
             </div>
+          </div>
         </div>
-    </footer>
+      </div>
 
-    <script src="js/form.js"></script>
+      <!-- VOXTOR -->
+      <div class="case-card">
+        <div class="case-header">
+          <div class="case-industry">Tecnologia</div>
+          <h2>Voxtor Brasil</h2>
+        </div>
+
+        <div class="case-content">
+          <div class="case-description">
+            <h3>Contexto</h3>
+            <p>
+              Desenvolvimento interno de soluções de <strong>Business Intelligence</strong>
+              para controle financeiro, comercial e operacional.
+            </p>
+
+            <h3>Solução</h3>
+            <ul>
+              <li>Dashboards personalizados</li>
+              <li>Indicadores estratégicos</li>
+              <li>Gestão baseada em dados</li>
+            </ul>
+            
+            <div class="case-cta">
+              <a href="contato.html" class="btn btn-case">
+                Quero um projeto assim
+              </a>
+            </div>
+          </div>
+
+          <div class="case-results">
+            <h3>Resultados</h3>
+            <div class="results-grid">
+              <div class="result-item">
+                <div class="result-number">Clareza</div>
+                <div class="result-label">Decisões estratégicas</div>
+              </div>
+              <div class="result-item">
+                <div class="result-number">Eficiência</div>
+                <div class="result-label">Gestão interna</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRIME AUTOCENTER -->
+      <div class="case-card">
+        <div class="case-header">
+          <div class="case-industry">Automotivo</div>
+          <h2>Prime Autocenter</h2>
+        </div>
+
+        <div class="case-content">
+          <div class="case-description">
+            <h3>Contexto</h3>
+            <p>
+              Empresa do setor automotivo que adotou soluções de
+              <strong>CRM</strong> para melhorar processos, reduzir custos
+              e ganhar produtividade.
+            </p>
+
+            <h3>Solução</h3>
+            <ul>
+              <li>Implantação de CRM</li>
+              <li>Automação comercial</li>
+              <li>Organização do relacionamento com clientes</li>
+            </ul>
+            
+            <div class="case-cta">
+              <a href="contato.html" class="btn btn-case">
+                Quero um projeto assim
+              </a>
+            </div>
+          </div>
+
+          <div class="case-results">
+            <h3>Resultados</h3>
+            <div class="results-grid">
+              <div class="result-item">
+                <div class="result-number">Redução</div>
+                <div class="result-label">Custos e tempo</div>
+              </div>
+              <div class="result-item">
+                <div class="result-number">Base</div>
+                <div class="result-label">Para IoT e BI</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Quer ser o próximo case de sucesso?</h2>
+        <p>Vamos entender sua necessidade e construir a solução ideal.</p>
+        <a href="contato.html" class="btn btn-primary btn-lg">Falar com um especialista</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; <span class="current-year">2024</span> Voxtor Brasil. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
