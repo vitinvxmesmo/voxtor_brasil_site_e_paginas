@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendar Demonstração - Zapbot</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0a0a0a;
+      color: #f5f5f5;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Background Grid */
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, #1a1a1a 1px, transparent 1px),
+        linear-gradient(to bottom, #1a1a1a 1px, transparent 1px);
+      background-size: 4rem 4rem;
+      opacity: 0.2;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #262626;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(to right, #fbbf24, #d97706);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #a3a3a3;
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.3s;
+    }
+
+    .back-btn:hover {
+      color: #fbbf24;
+    }
+
+    /* Main Content */
+    .main-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    /* Left Side - Info */
+    .info-section {
+      position: sticky;
+      top: 2rem;
+    }
+
+    .info-section h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 300;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .info-section h1 .highlight {
+      color: #fbbf24;
+      font-weight: 600;
+    }
+
+    .info-section p {
+      color: #a3a3a3;
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+    }
+
+    .benefits {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .benefit-item {
+      display: flex;
+      align-items: start;
+      gap: 1rem;
+    }
+
+    .benefit-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      background: linear-gradient(to bottom right, rgba(251, 191, 36, 0.1), rgba(217, 119, 6, 0.1));
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .benefit-content h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      color: #f5f5f5;
+    }
+
+    .benefit-content p {
+      font-size: 0.875rem;
+      color: #a3a3a3;
+      margin: 0;
+    }
+
+    /* Right Side - Form */
+    .form-section {
+      background: rgba(23, 23, 23, 0.5);
+      border: 1px solid #262626;
+      border-radius: 1rem;
+      padding: 2.5rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .form-header {
+      margin-bottom: 2rem;
+    }
+
+    .form-header h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-header p {
+      color: #a3a3a3;
+      font-size: 0.875rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: #d4d4d4;
+    }
+
+    .required {
+      color: #fbbf24;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      background: #0a0a0a;
+      border: 1px solid #262626;
+      border-radius: 0.5rem;
+      color: #f5f5f5;
+      font-size: 1rem;
+      transition: all 0.3s;
+      font-family: inherit;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #fbbf24;
+      box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    /* Date & Time Selection */
+    .datetime-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+
+    .time-slot {
+      padding: 0.75rem;
+      background: #0a0a0a;
+      border: 1px solid #262626;
+      border-radius: 0.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.875rem;
+    }
+
+    .time-slot:hover {
+      border-color: #fbbf24;
+      background: rgba(251, 191, 36, 0.05);
+    }
+
+    .time-slot.selected {
+      background: linear-gradient(to right, #fbbf24, #d97706);
+      color: #0a0a0a;
+      border-color: #fbbf24;
+      font-weight: 600;
+    }
+
+    .time-slot.disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .time-slot.disabled:hover {
+      border-color: #262626;
+      background: #0a0a0a;
+    }
+
+    /* Submit Button */
+    .submit-btn {
+      width: 100%;
+      padding: 1rem 2rem;
+      background: linear-gradient(to right, #fbbf24, #d97706);
+      color: #0a0a0a;
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(251, 191, 36, 0.3);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Success Message */
+    .success-message {
+      display: none;
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+
+    .success-message.active {
+      display: block;
+    }
+
+    .success-icon {
+      width: 4rem;
+      height: 4rem;
+      background: linear-gradient(to bottom right, rgba(251, 191, 36, 0.2), rgba(217, 119, 6, 0.2));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+
+    .success-message h3 {
+      font-size: 1.75rem;
+      margin-bottom: 0.75rem;
+      color: #fbbf24;
+    }
+
+    .success-message p {
+      color: #a3a3a3;
+      margin-bottom: 2rem;
+    }
+
+    /* Trust Indicators */
+    .trust-indicators {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid #262626;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: #a3a3a3;
+    }
+
+    /* Icons */
+    .icon {
+      width: 1.25rem;
+      height: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .icon-amber {
+      color: #fbbf24;
+    }
+
+    .icon-lg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 968px) {
+      .main-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .info-section {
+        position: static;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .datetime-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 1.5rem 1rem;
+      }
+
+      .form-section {
+        padding: 1.5rem;
+      }
+
+      .header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+
+      .datetime-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="logo">⚡ Zapbot</div>
+      <a href="#" class="back-btn" onclick="history.back(); return false;">
+        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+        </svg>
+        Voltar
+      </a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Left Side - Info -->
+      <div class="info-section">
+        <h1>
+          Agende sua <span class="highlight">Demonstração Gratuita</span>
+        </h1>
+        <p>
+          Converse com um especialista e descubra como o Zapbot pode transformar seu atendimento e aumentar suas vendas.
+        </p>
+
+        <div class="benefits">
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <svg class="icon-lg icon-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <div class="benefit-content">
+              <h3>Demonstração Personalizada</h3>
+              <p>Mostraremos como o Zapbot funciona no seu tipo de negócio</p>
+            </div>
+          </div>
+
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <svg class="icon-lg icon-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <div class="benefit-content">
+              <h3>30 Minutos de Valor</h3>
+              <p>Sessão focada em suas necessidades e objetivos</p>
+            </div>
+          </div>
+
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <svg class="icon-lg icon-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <div class="benefit-content">
+              <h3>Sem Compromisso</h3>
+              <p>Conheça a plataforma sem pressão de vendas</p>
+            </div>
+          </div>
+
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <svg class="icon-lg icon-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+              </svg>
+            </div>
+            <div class="benefit-content">
+              <h3>Consultoria Gratuita</h3>
+              <p>Receba insights sobre como melhorar seu atendimento</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="trust-indicators">
+          <div class="trust-item">
+            <svg class="icon icon-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+            Dados 100% seguros
+          </div>
+          <div class="trust-item">
+            <svg class="icon icon-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            Resposta em até 24h
+          </div>
+          <div class="trust-item">
+            <svg class="icon icon-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            Sem taxa de cancelamento
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side - Form -->
+      <div class="form-section">
+        <div id="formContent">
+          <div class="form-header">
+            <h2>Preencha seus dados</h2>
+            <p>Todas as informações são confidenciais</p>
+          </div>
+
+          <form id="agendamentoForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Nome Completo <span class="required">*</span></label>
+                <input type="text" id="nome" required placeholder="João Silva">
+              </div>
+
+              <div class="form-group">
+                <label>Email Corporativo <span class="required">*</span></label>
+                <input type="email" id="email" required placeholder="joao@empresa.com">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>WhatsApp <span class="required">*</span></label>
+                <input type="tel" id="telefone" required placeholder="(11) 99999-9999">
+              </div>
+
+              <div class="form-group">
+                <label>Empresa</label>
+                <input type="text" id="empresa" placeholder="Nome da empresa">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Cargo/Função</label>
+              <input type="text" id="cargo" placeholder="Ex: Gerente de Vendas">
+            </div>
+
+            <div class="form-group">
+              <label>Tamanho da Equipe <span class="required">*</span></label>
+              <select id="tamanho" required>
+                <option value="">Selecione uma opção</option>
+                <option value="1-5">1-5 colaboradores</option>
+                <option value="6-20">6-20 colaboradores</option>
+                <option value="21-50">21-50 colaboradores</option>
+                <option value="51-200">51-200 colaboradores</option>
+                <option value="200+">Mais de 200 colaboradores</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Preferência de Data <span class="required">*</span></label>
+              <input type="date" id="data" required>
+            </div>
+
+            <div class="form-group">
+              <label>Horário Preferido <span class="required">*</span></label>
+              <div class="datetime-grid" id="timeSlots">
+                <!-- Time slots will be generated by JavaScript -->
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>O que você gostaria de saber?</label>
+              <textarea id="mensagem" placeholder="Conte-nos sobre seus desafios e objetivos..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">
+              <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+              Confirmar Agendamento
+            </button>
+          </form>
+        </div>
+
+        <!-- Success Message (hidden by default) -->
+        <div class="success-message" id="successMessage">
+          <div class="success-icon">
+            <svg class="icon-lg icon-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+          <h3>Agendamento Confirmado!</h3>
+          <p>Enviamos um email de confirmação com todos os detalhes.<br>Nosso time entrará em contato em breve.</p>
+          <button class="submit-btn" onclick="window.location.href='/'">
+            Voltar para Home
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  /************* CONFIGURE SUA WEBHOOK AQUI *************/
+  const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1454134452665061606/cP_Bq8jmjJoFt7nePGTDpyQAqOGVbiDevCkMImxBdECvmBcQIDK9ixf92ut1vL_EyWUH";
+  /******************************************************/
+
+  // Função para enviar para o Discord
+  async function sendToDiscord(data) {
+    if (!DISCORD_WEBHOOK_URL || DISCORD_WEBHOOK_URL.includes("COLE_AQUI")) return;
+
+    const payload = {
+      username: "Zapbot - Agendamentos",
+      embeds: [
+        {
+          title: "📅 Novo Agendamento Recebido",
+          color: 0xfbbf24,
+          fields: [
+            { name: "Nome", value: data.nome || "Não informado", inline: true },
+            { name: "Email", value: data.email || "Não informado", inline: true },
+            { name: "Telefone", value: data.telefone || "Não informado", inline: true },
+            { name: "Empresa", value: data.empresa || "Não informado", inline: true },
+            { name: "Cargo", value: data.cargo || "Não informado", inline: true },
+            { name: "Tamanho da Empresa", value: data.tamanho || "Não informado", inline: true },
+            { name: "Data", value: data.data, inline: true },
+            { name: "Horário", value: data.horario, inline: true },
+          ],
+          description: data.mensagem || "Sem mensagem adicional",
+          timestamp: new Date().toISOString(),
+          footer: { text: "Sistema de Agendamento ZapBot" }
+        }
+      ]
+    };
+
+    try {
+      await fetch(DISCORD_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      console.log("Webhook enviada com sucesso!");
+    } catch (error) {
+      console.error("Erro ao enviar para o Discord:", error);
+    }
+  }
+
+  /* ------------ SCRIPT ORIGINAL ------------- */
+
+  // Generate time slots
+  const timeSlots = ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00', '17:00'];
+  const timeSlotsContainer = document.getElementById('timeSlots');
+  let selectedTime = '';
+
+  timeSlots.forEach(time => {
+    const slot = document.createElement('div');
+    slot.className = 'time-slot';
+    slot.textContent = time;
+    slot.onclick = () => selectTimeSlot(slot, time);
+    timeSlotsContainer.appendChild(slot);
+  });
+
+  function selectTimeSlot(element, time) {
+    document.querySelectorAll('.time-slot').forEach(slot => {
+      slot.classList.remove('selected');
+    });
+    element.classList.add('selected');
+    selectedTime = time;
+  }
+
+  // Set minimum date to today
+  const dateInput = document.getElementById('data');
+  const today = new Date().toISOString().split('T')[0];
+  dateInput.min = today;
+
+  // Handle form submission
+  document.getElementById('agendamentoForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (!selectedTime) {
+      alert('Por favor, selecione um horário.');
+      return;
+    }
+
+    const formData = {
+      nome: document.getElementById('nome').value,
+      email: document.getElementById('email').value,
+      telefone: document.getElementById('telefone').value,
+      empresa: document.getElementById('empresa').value,
+      cargo: document.getElementById('cargo').value,
+      tamanho: document.getElementById('tamanho').value,
+      data: document.getElementById('data').value,
+      horario: selectedTime,
+      mensagem: document.getElementById('mensagem').value
+    };
+
+    // ENVIA PARA O DISCORD AQUI
+    sendToDiscord(formData);
+
+    // Mostra mensagem de sucesso
+    document.getElementById('formContent').classList.remove('active');
+    document.getElementById('formContent').style.display = 'none';
+    document.getElementById('successMessage').classList.add('active');
+  });
+
+  // Format phone input
+  document.getElementById('telefone').addEventListener('input', (e) => {
+    let value = e.target.value.replace(/\D/g, '');
+    if (value.length > 11) value = value.slice(0, 11);
+    
+    if (value.length > 6) {
+      value = value.replace(/^(\d{2})(\d{5})(\d{0,4}).*/, '($1) $2-$3');
+    } else if (value.length > 2) {
+      value = value.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
+    } else if (value.length > 0) {
+      value = value.replace(/^(\d*)/, '($1');
+    }
+
+    e.target.value = value;
+  });
+</script>
+
+</body>
+</html>

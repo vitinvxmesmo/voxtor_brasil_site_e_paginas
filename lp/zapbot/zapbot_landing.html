@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zapbot - Automação Inteligente para WhatsApp</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0a0a0a;
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Background Grid */
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, #1a1a1a 1px, transparent 1px),
+        linear-gradient(to bottom, #1a1a1a 1px, transparent 1px);
+      background-size: 4rem 4rem;
+      opacity: 0.2;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Webhook Config Button */
+    .webhook-btn {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      z-index: 50;
+      background: #171717;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      border: 1px solid #262626;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .webhook-btn:hover {
+      background: #1f1f1f;
+    }
+
+    .webhook-panel {
+      position: fixed;
+      top: 5rem;
+      right: 1.5rem;
+      z-index: 50;
+      background: #171717;
+      padding: 1.25rem;
+      border-radius: 0.5rem;
+      border: 1px solid #262626;
+      width: 320px;
+      display: none;
+    }
+
+    .webhook-panel.active {
+      display: block;
+    }
+
+    .webhook-panel h3 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: #fbbf24;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .webhook-panel input {
+      width: 100%;
+      padding: 0.625rem 1rem;
+      background: #0a0a0a;
+      border: 1px solid #262626;
+      border-radius: 0.375rem;
+      color: #f5f5f5;
+      font-size: 0.875rem;
+      transition: border 0.3s;
+    }
+
+    .webhook-panel input:focus {
+      outline: none;
+      border-color: #fbbf24;
+    }
+
+    .webhook-panel p {
+      font-size: 0.75rem;
+      color: #737373;
+      margin-top: 0.5rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: linear-gradient(to right, rgba(251, 191, 36, 0.1), rgba(217, 119, 6, 0.1));
+      border: 1px solid rgba(251, 191, 36, 0.2);
+      border-radius: 9999px;
+      margin-bottom: 2rem;
+    }
+
+    .badge span {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #fbbf24;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 300;
+      margin-bottom: 2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 .highlight {
+      font-weight: 700;
+      background: linear-gradient(to right, #fbbf24, #d97706);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: clamp(1.25rem, 2vw, 1.5rem);
+      color: #a3a3a3;
+      margin-bottom: 3rem;
+      max-width: 56rem;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 300;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 4rem;
+    }
+
+    .btn-primary {
+      padding: 1.25rem 2.5rem;
+      background: linear-gradient(to right, #fbbf24, #d97706);
+      color: #0a0a0a;
+      border: none;
+      border-radius: 0.375rem;
+      font-weight: 600;
+      font-size: 1.125rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 20px 40px rgba(251, 191, 36, 0.4);
+    }
+
+    .btn-secondary {
+      padding: 1.25rem 2.5rem;
+      background: #171717;
+      color: #f5f5f5;
+      border: 1px solid #262626;
+      border-radius: 0.375rem;
+      font-weight: 600;
+      font-size: 1.125rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-secondary:hover {
+      background: #1f1f1f;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+      margin-top: 6rem;
+      max-width: 56rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .stat-item {
+      border-left: 1px solid #262626;
+      padding-left: 1.5rem;
+      text-align: left;
+    }
+
+    .stat-value {
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: #fbbf24;
+      margin: 1rem 0 0.5rem 0;
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: #737373;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Section Styling */
+    section {
+      padding: 8rem 1.5rem;
+      border-top: 1px solid #171717;
+      position: relative;
+      z-index: 1;
+    }
+
+    section h2 {
+      font-size: clamp(3rem, 6vw, 4rem);
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    section > p {
+      font-size: 1.25rem;
+      color: #a3a3a3;
+      text-align: center;
+      max-width: 48rem;
+      margin: 0 auto 5rem;
+    }
+
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      padding: 2rem;
+      background: rgba(23, 23, 23, 0.5);
+      border: 1px solid #262626;
+      border-radius: 0.5rem;
+      transition: all 0.3s;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(251, 191, 36, 0.3);
+    }
+
+    .feature-icon {
+      width: 3.5rem;
+      height: 3.5rem;
+      background: linear-gradient(to bottom right, rgba(251, 191, 36, 0.1), rgba(217, 119, 6, 0.1));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.375rem;
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s;
+    }
+
+    .feature-card:hover .feature-icon {
+      transform: scale(1.1);
+    }
+
+    .feature-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-benefit {
+      font-size: 0.875rem;
+      color: #fbbf24;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+
+    .feature-card p {
+      color: #a3a3a3;
+    }
+
+    /* Pricing Cards */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 80rem;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      padding: 2.5rem;
+      background: rgba(23, 23, 23, 0.5);
+      border: 1px solid #262626;
+      border-radius: 0.5rem;
+      position: relative;
+    }
+
+    .pricing-card.featured {
+      background: linear-gradient(to bottom right, rgba(251, 191, 36, 0.05), rgba(217, 119, 6, 0.05));
+      border: 2px solid rgba(251, 191, 36, 0.3);
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: -1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(to right, #fbbf24, #d97706);
+      color: #0a0a0a;
+      padding: 0.5rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .pricing-card h3 {
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-subtitle {
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 2rem;
+    }
+
+    .pricing-card.featured .pricing-subtitle {
+      color: #fbbf24;
+    }
+
+    .price-old {
+      color: #525252;
+      text-decoration: line-through;
+      font-size: 1.125rem;
+    }
+
+    .price-current {
+      font-size: 3rem;
+      font-weight: 300;
+      margin: 0.5rem 0;
+    }
+
+    .pricing-card.featured .price-current {
+      color: #fbbf24;
+    }
+
+    .price-period {
+      color: #737373;
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin: 2.5rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .pricing-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    /* Alinhamento dos cards do preço */
+.pricing-card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Empurra o botão para o final do card */
+.pricing-card button {
+  margin-top: auto;
+}
+
+    /* Form */
+    .form-container {
+      max-width: 42rem;
+      margin: 0 auto;
+      padding: 3rem;
+      background: rgba(23, 23, 23, 0.5);
+      border: 1px solid #262626;
+      border-radius: 0.5rem;
+    }
+
+    .form-container h2 {
+      font-size: 1.875rem;
+      font-weight: 300;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .form-container > p {
+      text-align: center;
+      color: #a3a3a3;
+      margin-bottom: 2.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 1rem 1.25rem;
+      background: #0a0a0a;
+      border: 1px solid #262626;
+      border-radius: 0.375rem;
+      color: #f5f5f5;
+      font-size: 1rem;
+      transition: border 0.3s;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #fbbf24;
+    }
+
+    /* Icons */
+    .icon {
+      width: 1.25rem;
+      height: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .icon-amber {
+      color: #fbbf24;
+    }
+
+    .icon-lg {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .icon-xl {
+      width: 1.75rem;
+      height: 1.75rem;
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem 1.5rem;
+      border-top: 1px solid #171717;
+      text-align: center;
+    }
+
+    footer p {
+      color: #525252;
+      font-size: 0.875rem;
+    }
+
+    footer p:last-child {
+      color: #404040;
+      font-size: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .stats {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+      }
+
+      .btn-primary, .btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* Utility Classes */
+    .text-center { text-align: center; }
+    .mb-8 { margin-bottom: 2rem; }
+    .mt-8 { margin-top: 2rem; }
+    .flex { display: flex; }
+    .items-center { align-items: center; }
+    .justify-center { justify-content: center; }
+    .gap-2 { gap: 0.5rem; }
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+
+  <!-- Webhook Config -->
+  <button class="webhook-btn" onclick="toggleWebhook()" title="Configurar Discord Webhook">
+    <svg class="icon icon-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+    </svg>
+  </button>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="badge">
+        <svg class="icon icon-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+        </svg>
+        <span>Solução Enterprise</span>
+      </div>
+      
+      <h1>
+        Aumente Suas Vendas em Até <span class="highlight">120%</span>
+      </h1>
+      
+      <p>
+        Automatize seu WhatsApp com inteligência artificial. A ferramenta 100% em nuvem que transforma conversas em vendas.
+      </p>
+
+      <div class="cta-buttons">
+  <button class="btn-primary" onclick="ctaScrollToPlanos()">
+    Começar Agora
+    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+    </svg>
+  </button>
+
+  <button class="btn-secondary" onclick="window.location.href='agenda.html'">
+    Agendar Demonstração
+  </button>
+</div>
+
+
+      <p class="flex items-center justify-center gap-2" style="font-size: 0.875rem; color: #737373;">
+        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+        </svg>
+        Sem compromisso. Cancele quando quiser.
+      </p>
+
+      <div class="stats">
+        <div class="stat-item">
+          <svg class="icon-lg icon-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+          </svg>
+          <div class="stat-value">10.000+</div>
+          <div class="stat-label">Empresas Confiantes</div>
+        </div>
+        <div class="stat-item">
+          <svg class="icon-lg icon-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+          </svg>
+          <div class="stat-value">+50%</div>
+          <div class="stat-label">Crescimento Médio</div>
+        </div>
+        <div class="stat-item">
+          <svg class="icon-lg icon-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <div class="stat-value">24/7</div>
+          <div class="stat-label">Disponibilidade</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section style="background: #0a0a0a;">
+    <div class="container">
+      <h2>Tecnologia de Ponta</h2>
+      <p>Recursos desenvolvidos para maximizar resultados e eficiência operacional.</p>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg class="icon-xl icon-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+            </svg>
+          </div>
+          <h3>100% em Nuvem</h3>
+          <div class="feature-benefit">Infraestrutura Enterprise</div>
+          <p>Acesso de qualquer lugar com máxima segurança e disponibilidade. Sem instalações ou configurações complexas.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg class="icon-xl icon-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+            </svg>
+          </div>
+          <h3>Construtor Visual</h3>
+          <div class="feature-benefit">Simplicidade & Poder</div>
+          <p>Interface drag-and-drop intuitiva. Crie fluxos sofisticados sem conhecimento técnico.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg class="icon-xl icon-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <h3>Integração ChatGPT</h3>
+          <div class="feature-benefit">Inteligência Artificial</div>
+          <p>Conversas naturais e contextualizadas. IA treinada para converter leads em clientes.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg class="icon-xl icon-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+            </svg>
+          </div>
+          <h3>Áudios Humanizados</h3>
+          <div class="feature-benefit">Autenticidade Premium</div>
+          <p>Mensagens de áudio que criam conexão genuína. Personalização total da experiência.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg class="icon-xl icon-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <h3>Integrações Nativas</h3>
+          <div class="feature-benefit">Ecossistema Completo</div>
+          <p>Conecte Hotmart, Kiwify, Braip e mais de 20 plataformas via webhook.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg class="icon-xl icon-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
+          </div>
+          <h3>Analytics Avançado</h3>
+          <div class="feature-benefit">Decisões Baseadas em Dados</div>
+          <p>Métricas detalhadas de conversão, engajamento e performance de vendas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="planos">
+  <div class="container">
+    <h2>Investimento Estratégico</h2>
+    <p>Planos desenhados para diferentes necessidades de negócio</p>
+      
+      <div class="pricing-grid">
+        <div class="pricing-card">
+  <h3>Premium</h3>
+  <div class="pricing-subtitle" style="color: #737373;">Para Crescimento</div>
+
+  <div class="mb-8">
+    <div class="price-old">R$ 149</div>
+    <div class="price-current">R$ 99</div>
+    <div class="price-period">por mês</div>
+  </div>
+
+  <ul class="pricing-features">
+    <li>
+      <svg class="icon icon-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+      <span style="color: #d4d4d4;">Integração ChatGPT avançada</span>
+    </li>
+    <li>
+      <svg class="icon icon-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+      <span style="color: #d4d4d4;">Áudios humanizados</span>
+    </li>
+    <li>
+      <svg class="icon icon-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+      <span style="color: #d4d4d4;">Suporte prioritário</span>
+    </li>
+  </ul>
+
+  <button class="btn-secondary" style="width: 100%;" onclick="window.location.href='https://pay.kiwify.com.br/mjAjrry?afid=MH8fbTEr'">
+  Escolher Premium
+</button>
+
+</div>
+
+
+        <div class="pricing-card featured">
+          <div class="pricing-badge">Recomendado</div>
+          
+          <h3>Full Power</h3>
+          <div class="pricing-subtitle">Para Escala</div>
+          
+          <div class="mb-8">
+            <div class="price-old">R$ 199</div>
+            <div class="price-current">R$ 149</div>
+            <div class="price-period">por mês</div>
+          </div>
+
+          <ul class="pricing-features">
+            <li>
+              <svg class="icon icon-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span style="color: #e5e5e5;">Tudo do Premium incluído</span>
+            </li>
+            <li>
+              <svg class="icon icon-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span style="color: #e5e5e5;">Integrações ilimitadas</span>
+            </li>
+            <li>
+              <svg class="icon icon-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span style="color: #e5e5e5;">API completa e webhooks</span>
+            </li>
+            <li>
+              <svg class="icon icon-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span style="color: #e5e5e5;">Personalização avançada</span>
+            </li>
+            <li>
+              <svg class="icon icon-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span style="color: #e5e5e5;">Relatórios empresariais</span>
+            </li>
+            <li>
+              <svg class="icon icon-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span style="color: #e5e5e5;">Suporte VIP dedicado</span>
+            </li>
+          </ul>
+
+          <button class="btn-secondary" style="width: 100%;" onclick="window.location.href='https://pay.kiwify.com.br/BAOsl0f?afid=MH8fbTEr'">
+  Escolher Full Power
+</button>
+        </div>
+      </div>
+
+      <p class="text-center" style="color: #737373; margin-top: 3rem;">
+        Economize 25% com plano anual
+      </p>
+    </div>
+  </section>
+
+  <!-- Lead Form -->
+  <section style="background: #0a0a0a;">
+    <div class="container">
+      <div class="form-container">
+        <h2>Fale com Nossa Equipe</h2>
+        <p>Agende uma demonstração personalizada para seu negócio</p>
+
+        <div class="form-group">
+          <input type="text" id="nameInput" placeholder="Nome Completo">
+          <input type="email" id="emailInput" placeholder="Email Corporativo">
+          <input type="tel" id="phoneInput" placeholder="WhatsApp">
+          <input type="text" id="companyInput" placeholder="Empresa (opcional)">
+          <button class="btn-primary" style="width: 100%; justify-content: center;" onclick="handleLeadCapture()">
+            Solicitar Demonstração
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section>
+    <div class="container text-center">
+      <h2 style="font-size: clamp(3rem, 7vw, 5rem);">Pronto Para Crescer?</h2>
+      <p style="font-size: 1.25rem; color: #a3a3a3; margin-bottom: 3rem; max-width: 42rem; margin-left: auto; margin-right: auto;">
+        Junte-se a milhares de empresas que já transformaram seu atendimento e vendas
+      </p>
+      <button class="btn-primary" onclick="scrollToPlanos()">
+  Começar Agora
+  <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+  </svg>
+</button>
+
+      <p class="flex items-center justify-center gap-2 mt-8" style="font-size: 0.875rem; color: #737373;">
+        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+        </svg>
+        Garantia de satisfação • Sem fidelização • Suporte dedicado
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2024 Zapbot. Todos os direitos reservados.</p>
+      <p>Automatização Inteligente para Negócios Modernos</p>
+    </div>
+  </footer>
+
+  <script>
+    // Form data
+    let formData = {
+      name: '',
+      email: '',
+      phone: '',
+      company: ''
+    };
+
+    let webhookUrl = 'https://discord.com/api/webhooks/1454095152841883701/p-ecysVY9uMqb3L4zZevxcKLBdInsTniyX6o3G43SjTQMrDBEkV3bLL7l2XP_f9xQ9RY';
+
+    // Toggle webhook panel
+    function toggleWebhook() {
+      const panel = document.getElementById('webhookPanel');
+      panel.classList.toggle('active');
+    }
+
+    // Update webhook URL
+    document.getElementById('webhookUrl').addEventListener('input', (e) => {
+      webhookUrl = e.target.value;
+    });
+
+    // Send to Discord
+    async function sendToDiscord(data, eventType) {
+      if (!webhookUrl) return;
+
+      const embed = {
+        title: eventType,
+        color: eventType.includes('Assinatura') ? 0xD4AF37 : 0x1a1a1a,
+        fields: [
+          { name: 'Nome', value: data.name || 'N/A', inline: true },
+          { name: 'Email', value: data.email || 'N/A', inline: true },
+          { name: 'Telefone', value: data.phone || 'N/A', inline: true },
+          { name: 'Empresa', value: data.company || 'N/A', inline: true },
+          { name: 'Plano', value: data.plan || 'N/A', inline: true },
+          { name: 'Valor', value: data.price || 'N/A', inline: true }
+        ],
+        timestamp: new Date().toISOString(),
+        footer: { text: 'Zapbot - Sistema de Vendas Premium' }
+      };
+
+      try {
+        await fetch(webhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ embeds: [embed] })
+        });
+      } catch (error) {
+        console.error('Erro ao enviar para Discord:', error);
+      }
+    }
+
+    // Handle CTA clicks
+    function handleCTA(planType) {
+      const planInfo = {
+        premium: { name: 'Premium', price: 'R$ 99/mês' },
+        full: { name: 'Full Power', price: 'R$ 149/mês' }
+      };
+
+      const data = {
+        ...formData,
+        plan: planInfo[planType].name,
+        price: planInfo[planType].price
+      };
+
+      sendToDiscord(data, '🏆 Nova Assinatura Iniciada');
+      alert(`Redirecionando para checkout do plano ${planInfo[planType].name}`);
+    }
+
+    // Handle lead capture
+    function handleLeadCapture() {
+      const name = document.getElementById('nameInput').value;
+      const email = document.getElementById('emailInput').value;
+      const phone = document.getElementById('phoneInput').value;
+      const company = document.getElementById('companyInput').value;
+
+      if (!name || !email || !phone) {
+        alert('Por favor, preencha todos os campos obrigatórios.');
+        return;
+      }
+
+      formData = { name, email, phone, company };
+      
+      sendToDiscord(formData, '📋 Novo Lead Qualificado');
+      alert('Obrigado! Nossa equipe entrará em contato em breve.');
+      
+      // Clear form
+      document.getElementById('nameInput').value = '';
+      document.getElementById('emailInput').value = '';
+      document.getElementById('phoneInput').value = '';
+      document.getElementById('companyInput').value = '';
+    }
+
+    // Update form data on input
+    document.getElementById('nameInput').addEventListener('input', (e) => {
+      formData.name = e.target.value;
+    });
+    
+    document.getElementById('emailInput').addEventListener('input', (e) => {
+      formData.email = e.target.value;
+    });
+    
+    document.getElementById('phoneInput').addEventListener('input', (e) => {
+      formData.phone = e.target.value;
+    });
+    
+    document.getElementById('companyInput').addEventListener('input', (e) => {
+      formData.company = e.target.value;
+    });
+
+    // Clique "Começar Agora" → enviar para webhook + scroll suave
+async function ctaScrollToPlanos() {
+  // rola para os planos
+  const target = document.getElementById("planos");
+  if (target) target.scrollIntoView({ behavior: "smooth" });
+}
+function scrollToPlanos() {
+    const element = document.getElementById("planos");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+}
+  </script>
+</body>
+</html>
+              <svg class="icon icon-amber" fill="none" stroke="currentColor" viewBox="0 0 24
+
+
