@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Solicite uma consultoria gratuita com a Voxtor Brasil">
+  <title>Contato | Voxtor Brasil</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- NAVBAR COMPLETA -->
+<nav class="navbar" role="navigation">
+  <div class="container">
+    <div class="nav-wrapper">
+      <a href="index.html" class="logo" aria-label="Voxtor Brasil - Página Inicial">
+        <span class="logo-shadow"></span>
+        <img src="assets/logo.png" alt="Voxtor Brasil Logo">
+      </a>
+      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu" role="menubar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="solucoes.html">Soluções</a></li>
+        <li class="dropdown">
+          <a href="#">Plataformas</a>
+          <ul class="dropdown-menu">
+            <li><a href="sistemacalc.html">Calculadora Financeira</a></li>
+            <li><a href="sistemacrm.html">CRM Corporativo</a></li>
+          </ul>
+        </li>
+        <li><a href="cases.html">Cases</a></li>
+        <li><a href="contato.html" class="active">Contato</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="contact-hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="hero-title">Solicite uma <span class="highlight">Consultoria Estratégica</span></h1>
+      <p class="hero-subtitle">Diagnóstico gratuito e análise personalizada para seu negócio</p>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULÁRIO -->
+<section class="conversion-section">
+  <div class="container">
+    <div class="conversion-wrapper">
+      <div class="conversion-content">
+        <div class="conversion-header">
+          <span class="conversion-badge">CONSULTORIA GRATUITA</span>
+          <h2>Análise <span class="highlight">Personalizada</span></h2>
+          <p>Preencha o formulário para receber um diagnóstico preliminar e contato de nossos especialistas</p>
+        </div>
+
+        <div class="benefits-list">
+          <div class="benefit-item">
+            <span class="benefit-icon">→</span>
+            <span>Diagnóstico completo dos seus processos</span>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">→</span>
+            <span>Proposta personalizada sem compromisso</span>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">→</span>
+            <span>Identificação de oportunidades de otimização</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="conversion-form-container">
+        <form id="contactForm" class="conversion-form">
+          <div class="form-step active" data-step="1">
+            <h3>Informações Pessoais</h3>
+            
+            <div class="form-group">
+              <input type="text" id="nome" name="nome" placeholder="Nome completo *" required>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="E-mail corporativo *" required>
+              </div>
+              <div class="form-group">
+                <input type="tel" id="telefone" name="telefone" placeholder="Telefone/WhatsApp *" required>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <input type="text" id="empresa" name="empresa" placeholder="Empresa *" required>
+            </div>
+            
+            <div class="form-group">
+              <select id="cargo" name="cargo" required>
+                <option value="">Cargo / Função *</option>
+                <option value="CEO/Diretor">CEO / Diretor</option>
+                <option value="Gerente">Gerente</option>
+                <option value="Supervisor">Supervisor</option>
+                <option value="Analista">Analista</option>
+              </select>
+            </div>
+            
+            <button type="button" class="btn btn-primary next-step" data-next="2">Próximo</button>
+          </div>
+
+          <div class="form-step" data-step="2">
+            <h3>Necessidades da Empresa</h3>
+            
+            <div class="form-group">
+              <select id="setor" name="setor" required>
+                <option value="">Setor de atuação *</option>
+                <option value="Industria">Indústria</option>
+                <option value="Comercio">Comércio</option>
+                <option value="Servicos">Serviços</option>
+                <option value="Agronegocio">Agronegócio</option>
+                <option value="Saude">Saúde</option>
+                <option value="Educacao">Educação</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <select id="tamanho" name="tamanho" required>
+                <option value="">Tamanho da empresa *</option>
+                <option value="Pequena">Pequena (até 20 funcionários)</option>
+                <option value="Media">Média (21-100 funcionários)</option>
+                <option value="Grande">Grande (101-500 funcionários)</option>
+                <option value="Corporacao">Corporação (500+ funcionários)</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label class="checkbox-label">
+                <input type="checkbox" name="necessidades[]" value="Consultoria TI">
+                <span>Consultoria em TI</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="necessidades[]" value="Suporte Técnico">
+                <span>Suporte Técnico</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="necessidades[]" value="Automação">
+                <span>Automação / IoT</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="necessidades[]" value="Infraestrutura">
+                <span>Infraestrutura</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="necessidades[]" value="CRM">
+                <span>CRM Corporativo</span>
+              </label>
+            </div>
+            
+            <div class="form-group">
+              <textarea id="desafios" name="desafios" placeholder="Descreva os principais desafios atuais *" rows="3" required></textarea>
+            </div>
+            
+            <div class="form-buttons">
+              <button type="button" class="btn btn-secondary prev-step" data-prev="1">Voltar</button>
+              <button type="button" class="btn btn-primary next-step" data-next="3">Próximo</button>
+            </div>
+          </div>
+
+          <div class="form-step" data-step="3">
+            <h3>Finalizar Solicitação</h3>
+            
+            <div class="form-group">
+              <label class="radio-label">
+                <input type="radio" name="urgencia" value="Alta" required>
+                <span>Alta Urgência - Necessidade imediata</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="urgencia" value="Media" required>
+                <span>Média Urgência - Próximos meses</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="urgencia" value="Baixa" required>
+                <span>Baixa Urgência - Pesquisa de soluções</span>
+              </label>
+            </div>
+            
+            <div class="form-group">
+              <textarea id="observacoes" name="observacoes" placeholder="Observações adicionais (opcional)" rows="2"></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="privacidade" name="privacidade" required>
+                <span>Concordo com a <a href="#" class="privacy-link">Política de Privacidade</a></span>
+              </label>
+            </div>
+            
+            <div class="form-buttons">
+              <button type="button" class="btn btn-secondary prev-step" data-prev="2">Voltar</button>
+              <button type="submit" class="btn btn-primary" id="submitBtn">Solicitar Consultoria</button>
+            </div>
+          </div>
+          
+          <div class="form-progress">
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 33%"></div>
+            </div>
+            <div class="step-indicators">
+              <span class="step-indicator active">1</span>
+              <span class="step-indicator">2</span>
+              <span class="step-indicator">3</span>
+            </div>
+          </div>
+        </form>
+        
+        <div id="formMessage" class="form-message"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFORMAÇÕES DE CONTATO -->
+<section class="contact-info-section">
+  <div class="container">
+    <div class="contact-info-grid">
+      <div class="info-card">
+        <div class="info-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.574 2.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+        </div>
+        <h3>Telefone</h3>
+        <p>(38) 99874-9856</p>
+        <p class="small">24/7 - 365 dias</p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </div>
+        <h3>E-mail</h3>
+        <p>adm@voxtorbrasil.pro</p>
+        <p class="small">Resposta em até 4h</p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <h3>Localização</h3>
+        <p>Unaí - MG</p>
+        <p class="small">Atendimento em todo Brasil e Exterior</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER COMPLETO -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Voxtor Brasil</h4>
+        <p>Hub de tecnologia especializado em soluções corporativas completas</p>
+      </div>
+      <div class="footer-col">
+        <h4>Soluções</h4>
+        <ul>
+          <li><a href="solucoes.html#consultoria">Consultoria TI</a></li>
+          <li><a href="solucoes.html#suporte">Suporte Técnico</a></li>
+          <li><a href="solucoes.html#automacao">Automação</a></li>
+          <li><a href="solucoes.html#infraestrutura">Infraestrutura</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Plataformas</h4>
+        <ul>
+          <li><a href="sistemacalc.html">Calculadora Financeira</a></li>
+          <li><a href="sistemacrm.html">CRM Corporativo</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul>
+          <li>adm@voxtorbrasil.pro</li>
+          <li>(38) 99874-9856</li>
+          <li>Unaí - MG</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Voxtor Brasil. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- JS COMPLETO -->
+<script src="js/main.js"></script>
+<script src="js/logs.js"></script>
+<script src="js/form.js"></script>
+</body>
+</html>

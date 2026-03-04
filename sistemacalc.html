@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calculadora Financeira Voxtor - Simulação de ROI, payback e viabilidade de projetos de TI">
+  <title>Calculadora Financeira | Voxtor Brasil</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- NAVBAR COMPLETA -->
+  <nav class="navbar" role="navigation">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="index.html" class="logo" aria-label="Voxtor Brasil - Página Inicial">
+          <span class="logo-shadow"></span>
+          <img src="assets/logo.png" alt="Voxtor Brasil Logo">
+        </a>
+        <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-menu" role="menubar">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="solucoes.html">Soluções</a></li>
+          <li class="dropdown">
+            <a href="#" class="active">Plataformas</a>
+            <ul class="dropdown-menu">
+              <li><a href="sistemacalc.html" class="active">Calculadora Financeira</a></li>
+              <li><a href="sistemacrm.html">CRM Corporativo</a></li>
+            </ul>
+          </li>
+          <li><a href="cases.html">Cases</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Calculadora <span class="highlight">Financeira</span></h1>
+      <p>Análise financeira e simulação de vendas prático!</p>
+    </div>
+  </section>
+
+  <!-- VISÃO GERAL -->
+  <section class="platform-overview">
+    <div class="container">
+      <div class="overview-grid">
+        <div class="overview-content">
+          <h2>Tomada de decisão baseada em dados</h2>
+          <p>A Calculadora Financeira Voxtor é uma ferramenta analítica desenvolvida para quantificar o retorno sobre investimento, período de payback e viabilidade econômica de projetos de infraestrutura, automação e transformação digital.</p>
+          <p>Com parâmetros customizáveis e cenários comparativos, sua empresa obtém visibilidade completa sobre o impacto financeiro das soluções propostas.</p>
+          
+          <div class="metrics-summary">
+            <div class="metric-item">
+              <div class="metric-label">ROI médio</div>
+              <div class="metric-value">287%</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-label">Payback médio</div>
+              <div class="metric-value">14 meses</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-label">Precisão</div>
+              <div class="metric-value">±5%</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="overview-visual">
+          <div class="chart-placeholder">
+            <svg width="300" height="200" viewBox="0 0 300 200" style="background: var(--bg-tertiary); border-radius: 8px;">
+              <line x1="50" y1="150" x2="250" y2="150" stroke="var(--border-color)" stroke-width="2"/>
+              <line x1="50" y1="150" x2="50" y2="50" stroke="var(--border-color)" stroke-width="2"/>
+              <polyline points="50,140 100,120 150,80 200,60 250,30" stroke="var(--primary)" stroke-width="3" fill="none"/>
+              <rect x="70" y="145" width="20" height="40" fill="var(--primary)" opacity="0.3"/>
+              <rect x="120" y="125" width="20" height="60" fill="var(--primary)" opacity="0.3"/>
+              <rect x="170" y="95" width="20" height="90" fill="var(--primary)" opacity="0.3"/>
+              <rect x="220" y="65" width="20" height="120" fill="var(--primary)" opacity="0.3"/>
+            </svg>
+            <p class="chart-caption">Projeção de retorno acumulado</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FUNCIONALIDADES -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2>Funcionalidades <span class="highlight">Analíticas</span></h2>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card-detailed">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5">
+              <path d="M21 16v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2M7 10l3-3 3 3 4-4M16 4h4v4"/>
+            </svg>
+          </div>
+          <h3>Projeção de ROI</h3>
+          <p>Cálculo automático do retorno sobre investimento considerando CAPEX, OPEX e benefícios financeiros ao longo do tempo.</p>
+        </div>
+
+        <div class="feature-card-detailed">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+          <h3>Período de Payback</h3>
+          <p>Identificação do tempo necessário para recuperação do investimento inicial com base no fluxo de caixa projetado.</p>
+        </div>
+
+        <div class="feature-card-detailed">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5">
+              <path d="M3 3v18h18V3H3zm4 4h10v2H7V7zm0 4h10v2H7v-2zm0 4h6v2H7v-2z"/>
+            </svg>
+          </div>
+          <h3>Cenários Comparativos</h3>
+          <p>Simulação de múltiplos cenários (otimista, conservador, realista) para análise de sensibilidade e risco.</p>
+        </div>
+
+        <div class="feature-card-detailed">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z"/>
+              <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>
+            </svg>
+          </div>
+          <h3>Relatórios Executivos</h3>
+          <p>Geração de relatórios profissionais em PDF com gráficos e análises para apresentação a stakeholders.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARÂMETROS -->
+  <section class="parameters-section">
+    <div class="container">
+      <div class="parameters-grid">
+        <div class="parameters-list">
+          <h3>Parâmetros considerados</h3>
+          <ul>
+            <li>Investimento inicial (CAPEX)</li>
+            <li>Custos operacionais recorrentes (OPEX)</li>
+            <li>Economia projetada com a solução</li>
+            <li>Aumento de produtividade (em %)</li>
+            <li>Redução de custos com manutenção</li>
+            <li>Benefícios intangíveis</li>
+            <li>Taxa mínima de atratividade (TMA)</li>
+            <li>Horizonte de análise (anos)</li>
+          </ul>
+        </div>
+
+        <div class="parameters-form-preview">
+          <h3>Exemplo de input</h3>
+          <div class="preview-fields">
+            <div class="preview-field">
+              <span class="field-label">Investimento</span>
+              <span class="field-value">R$ 150.000</span>
+            </div>
+            <div class="preview-field">
+              <span class="field-label">Economia mensal</span>
+              <span class="field-value">R$ 12.500</span>
+            </div>
+            <div class="preview-field">
+              <span class="field-label">TMA</span>
+              <span class="field-value">12% a.a.</span>
+            </div>
+            <div class="preview-field highlight">
+              <span class="field-label">ROI projetado</span>
+              <span class="field-value">312%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="platform-cta">
+    <div class="container text-center">
+      <h2>Acesse a Calculadora Financeira</h2>
+      <p>Ferramenta gratuita para diagnóstico preliminar</p>
+      <a href="https://voxtor-calculadora.web.app/" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
+        Acessar plataforma
+      </a>
+      <p class="note">Abrirá em nova janela • Não requer cadastro</p>
+    </div>
+  </section>
+
+  <!-- FOOTER COMPLETO -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Voxtor Brasil</h4>
+          <p>Hub de tecnologia corporativa focado em soluções B2B de alto impacto.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Soluções</h4>
+          <ul>
+            <li><a href="solucoes.html#consultoria">Consultoria TI</a></li>
+            <li><a href="solucoes.html#suporte">Suporte Técnico</a></li>
+            <li><a href="solucoes.html#automacao">Automação</a></li>
+            <li><a href="solucoes.html#infraestrutura">Infraestrutura</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Plataformas</h4>
+          <ul>
+            <li><a href="sistemacalc.html">Calculadora Financeira</a></li>
+            <li><a href="sistemacrm.html">CRM Corporativo</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contato</h4>
+          <ul>
+            <li>adm@voxtorbrasil.pro</li>
+            <li>(38) 99874-9856</li>
+            <li>Unaí - MG</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Voxtor Brasil. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS COMPLETO -->
+  <script src="js/main.js"></script>
+  <script src="js/logs.js"></script>
+  <script src="js/form.js"></script>
+</body>
+</html>
