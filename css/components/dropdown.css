@@ -1,0 +1,118 @@
+/* =====================================================
+   DROPDOWN - VOXTOR BRASIL
+   ===================================================== */
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown > a {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.dropdown > a::after {
+    content: '▼';
+    font-size: 0.65rem;
+    margin-left: 4px;
+    color: var(--text-secondary);
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.dropdown:hover > a::after,
+.dropdown.open > a::after {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 240px;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 8px 0;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: var(--transition);
+    z-index: var(--z-dropdown);
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu li {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 12px 20px;
+    color: var(--text-secondary);
+    transition: var(--transition);
+    font-size: 0.95rem;
+    white-space: nowrap;
+    border-left: 2px solid transparent;
+}
+
+.dropdown-menu a:hover {
+    background: var(--bg-tertiary);
+    color: var(--primary);
+    padding-left: 24px;
+    border-left-color: var(--primary);
+}
+
+@media (max-width: 768px) {
+    .dropdown {
+        width: 100%;
+    }
+
+    .dropdown > a {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        background: transparent;
+        padding-left: 16px;
+        display: none;
+        min-width: 100%;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: none;
+    }
+
+    .dropdown.open .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-menu a {
+        padding: 12px 20px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 6px;
+        margin-bottom: 4px;
+        white-space: normal;
+    }
+
+    .dropdown-menu a:hover {
+        background: var(--bg-tertiary);
+        padding-left: 28px;
+    }
+}

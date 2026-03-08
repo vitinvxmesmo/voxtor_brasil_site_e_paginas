@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO -->
+    <title>Planos e Preços | Voxtor Brasil</title>
+    <meta name="description" content="Conheça todos os planos e preços da Voxtor Brasil. CRM, Calculadora Financeira, Consultoria, Suporte Técnico, Automação e muito mais.">
+    <meta name="keywords" content="planos voxtor, preços crm, calculadora financeira preço, consultoria ti valor, suporte técnico preço">
+    <meta name="author" content="Voxtor Brasil">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.voxtorbrasil.pro/precos/">
+    <meta property="og:title" content="Planos e Preços | Voxtor Brasil">
+    <meta property="og:description" content="Escolha o plano ideal para sua empresa. CRM, Calculadora e serviços de TI com preços acessíveis.">
+    <meta property="og:image" content="https://www.voxtorbrasil.pro/assets/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.voxtorbrasil.pro/precos/">
+    <meta property="twitter:title" content="Planos e Preços | Voxtor Brasil">
+    <meta property="twitter:description" content="Escolha o plano ideal para sua empresa. CRM, Calculadora e serviços de TI com preços acessíveis.">
+    <meta property="twitter:image" content="https://www.voxtorbrasil.pro/assets/twitter-image.jpg">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://www.voxtorbrasil.pro/precos/">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/favicons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png">
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+    
+    <!-- Preconnect para fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Skip to content link (acessibilidade) -->
+    <a href="#main-content" class="skip-to-content">Pular para conteúdo principal</a>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" role="navigation" aria-label="Menu principal">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="/index.html" class="logo" aria-label="Voxtor Brasil - Página Inicial">
+                    <span class="logo-shadow"></span>
+                    <img src="/assets/logo.png" alt="Voxtor Brasil Logo">
+                </a>
+                <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="nav-menu" role="menubar">
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/sobre.html">Sobre</a></li>
+                    <li><a href="/solucoes.html">Soluções</a></li>
+                    <li class="dropdown">
+                        <a href="#" aria-expanded="false" aria-haspopup="true">Plataformas</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/sistemacalc.html" role="menuitem">Calculadora Financeira</a></li>
+                            <li><a href="/sistemacrm.html" role="menuitem">CRM Corporativo</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/precos/" class="active" aria-current="page">Preços</a></li>
+                    <li><a href="/cases.html">Cases</a></li>
+                    <li><a href="/contato.html">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="page-hero" id="main-content" tabindex="-1">
+        <div class="container">
+            <h1>Planos e <span class="highlight">Preços</span></h1>
+            <p>Soluções completas para todos os tamanhos de empresa</p>
+        </div>
+    </section>
+
+    <!-- TABS DE CATEGORIA -->
+    <section class="pricing-tabs-section">
+        <div class="container">
+            <div class="pricing-tabs">
+                <button class="pricing-tab active" data-tab="produtos">📦 Produtos</button>
+                <button class="pricing-tab" data-tab="servicos">🔧 Serviços</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAINEL DE PRODUTOS -->
+    <section id="panel-produtos" class="pricing-panel active">
+        <!-- Toggle Mensal/Anual -->
+        <div class="container">
+            <div class="period-toggle-container">
+                <span class="period-label monthly active">Mensal</span>
+                <label class="switch">
+                    <input type="checkbox" id="period-toggle">
+                    <span class="slider round"></span>
+                </label>
+                <span class="period-label annual">Anual <span class="discount-badge">-20%</span></span>
+            </div>
+        </div>
+
+        <!-- CRM Section -->
+        <section class="pricing-section">
+            <div class="container">
+                <h2 class="section-title">CRM Voxtor Brasil</h2>
+                <div id="crm-plans" class="pricing-grid"></div>
+                <p class="text-center note">Todos os planos incluem suporte básico e atualizações</p>
+            </div>
+        </section>
+
+        <!-- Calculadora Section -->
+        <section class="pricing-section alt">
+            <div class="container">
+                <h2 class="section-title">Calculadora Financeira</h2>
+                <div id="calculadora-plans"></div>
+            </div>
+        </section>
+    </section>
+
+    <!-- PAINEL DE SERVIÇOS -->
+    <section id="panel-servicos" class="pricing-panel">
+        <section class="services-pricing-section">
+            <div class="container">
+                <h2 class="section-title">Serviços de TI</h2>
+                
+                <!-- Filtros -->
+                <div class="filters-bar">
+                    <select id="filter-categoria" class="form-select">
+                        <option value="todos">Todas as categorias</option>
+                        <option value="Consultoria TI">Consultoria TI</option>
+                        <option value="Suporte Técnico">Suporte Técnico</option>
+                        <option value="Automação & IoT">Automação & IoT</option>
+                        <option value="Infraestrutura">Infraestrutura</option>
+                        <option value="BI & Analytics">BI & Analytics</option>
+                    </select>
+                    
+                    <div class="period-tabs">
+                        <button class="period-tab active" data-period="mensal">Mensal</button>
+                        <button class="period-tab" data-period="semestral">Semestral</button>
+                        <button class="period-tab" data-period="anual">Anual</button>
+                    </div>
+                </div>
+                
+                <!-- Tabela de Serviços -->
+                <div id="servicos-table"></div>
+                
+                <p class="text-center note">* Preços para contratação mínima de 12 meses. Consulte condições para períodos menores.</p>
+            </div>
+        </section>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title text-center">Perguntas <span class="highlight">Frequentes</span></h2>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Posso mudar de plano depois?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim! Você pode fazer upgrade ou downgrade do seu plano a qualquer momento. As mudanças são aplicadas imediatamente e o valor é ajustado proporcionalmente.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Oferecem desconto para pagamento anual?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim! Todos os nossos planos têm 20% de desconto na contratação anual. Basta ativar o toggle "Anual" na página de preços.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Como funciona o plano gratuito do CRM?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>O plano gratuito inclui 100 contatos e 1 usuário, perfeito para começar. Não pedimos cartão de crédito e você pode usar por tempo indeterminado.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Preciso assinar contrato?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Não. Todos os planos são mensais e você pode cancelar quando quiser, sem multa ou burocracia.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ainda tem dúvidas?</h2>
+            <p>Fale com um de nossos especialistas e descubra a solução ideal para sua empresa</p>
+            <a href="/contato.html" class="btn btn-primary btn-lg">Falar com especialista</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Voxtor Brasil</h4>
+                    <p>Hub de tecnologia especializado em soluções corporativas completas</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Soluções</h4>
+                    <ul>
+                        <li><a href="/solucoes.html#consultoria">Consultoria TI</a></li>
+                        <li><a href="/solucoes.html#suporte">Suporte Técnico</a></li>
+                        <li><a href="/solucoes.html#automacao">Automação</a></li>
+                        <li><a href="/solucoes.html#infraestrutura">Infraestrutura</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Plataformas</h4>
+                    <ul>
+                        <li><a href="/sistemacalc.html">Calculadora Financeira</a></li>
+                        <li><a href="/sistemacrm.html">CRM Corporativo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li>adm@voxtorbrasil.pro</li>
+                        <li>(38) 99874-9856</li>
+                        <li>Unaí - MG</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Voxtor Brasil. Todos os direitos reservados.</p>
+                <div class="footer-bottom-links">
+                    <a href="/termos.html">Termos de Uso</a>
+                    <a href="/privacidade.html">Política de Privacidade</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="/js/vendor/smooth-scroll.js"></script>
+    <script src="/js/core/config.js"></script>
+    <script src="/js/core/utils.js"></script>
+    <script src="/js/modules/analytics/tracking.js"></script>
+    <script src="/js/modules/navigation.js"></script>
+    <script src="/js/modules/ui/back-to-top.js"></script>
+    <script src="/js/modules/ui/animations.js"></script>
+    <script src="/js/modules/ui/responsive.js"></script>
+    <script src="/js/modules/forms/validators.js"></script>
+    <script src="/js/modules/forms/lead-form.js"></script>
+    <script src="/js/modules/precos/precos-main.js"></script>
+    <script src="/js/modules/precos/crm-pricing.js"></script>
+    <script src="/js/modules/precos/calculadora-pricing.js"></script>
+    <script src="/js/modules/precos/servicos-table.js"></script>
+    <script src="/js/core/main.js"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6RMGENNH4G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6RMGENNH4G');
+</script>
+</body>
+</html>

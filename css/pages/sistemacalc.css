@@ -1,0 +1,45 @@
+/* =====================================================
+   PLATAFORMA CALCULADORA - VOXTOR BRASIL
+   ===================================================== */
+
+/* Este arquivo importa o estilo base de plataformas */
+@import url('./plataformas.css');
+
+/* Especificidades da Calculadora */
+.calculadora-features {
+    margin-top: 40px;
+}
+
+.calculadora-cta-premium {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    margin-top: 60px;
+}
+
+.calculadora-cta-premium h3 {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.existing-customer {
+    margin-top: 30px;
+    padding: 20px;
+    background: var(--bg-tertiary);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.existing-customer .checkbox-label {
+    display: inline-flex;
+    background: transparent;
+    border: none;
+}
+
+.existing-customer .checkbox-label:hover {
+    background: transparent;
+    border-color: transparent;
+}

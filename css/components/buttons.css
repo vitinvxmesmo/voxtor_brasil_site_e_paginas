@@ -1,0 +1,219 @@
+/* =====================================================
+   BOTÕES - VOXTOR BRASIL
+   ===================================================== */
+
+.btn {
+    display: inline-block;
+    padding: 14px 36px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    white-space: nowrap;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+    z-index: -1;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    box-shadow: 0 10px 30px rgba(192, 13, 132, 0.45);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(255, 41, 226, 0.55);
+}
+
+.btn-secondary {
+    border: 2px solid var(--primary);
+    color: var(--primary-light);
+    background: transparent;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 41, 226, 0.1);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    border: 2px solid var(--border-color);
+    color: var(--text-primary);
+    background: transparent;
+}
+
+.btn-outline:hover {
+    border-color: var(--primary);
+    color: var(--primary-light);
+    transform: translateY(-2px);
+}
+
+.btn-success {
+    background: #25D366;
+    color: white;
+}
+
+.btn-success:hover {
+    background: #128C7E;
+    transform: translateY(-2px);
+}
+
+.btn-link {
+    color: var(--primary);
+    text-decoration: underline;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+}
+
+.btn-link:hover {
+    color: var(--primary-light);
+}
+
+.btn-sm {
+    padding: 10px 24px;
+    font-size: 0.875rem;
+}
+
+.btn-lg {
+    padding: 18px 45px;
+    font-size: 1.1rem;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.btn.loading {
+    color: transparent !important;
+    pointer-events: none;
+    position: relative;
+}
+
+.btn.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+.btn-group {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.btn-group .btn {
+    flex: 1 1 auto;
+}
+
+.btn-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-icon svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+}
+
+.btn-case {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    display: inline-block;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+}
+
+.btn-case:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(192, 13, 132, 0.3);
+}
+
+.btn-logout {
+    padding: 8px 24px;
+    font-size: 0.95rem;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    z-index: var(--z-fixed);
+    border: none;
+    box-shadow: var(--shadow-md);
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px);
+    background: var(--accent);
+}
+
+.back-to-top svg {
+    width: 24px;
+    height: 24px;
+    stroke: white;
+    stroke-width: 2;
+}

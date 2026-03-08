@@ -1,0 +1,134 @@
+/* =====================================================
+   FOOTER - VOXTOR BRASIL
+   ===================================================== */
+
+.footer {
+    background: #0B0C0F;
+    padding: 64px 0 32px;
+    border-top: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-bottom: 48px;
+}
+
+.footer-col h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: var(--text-primary);
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.footer-col h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 2px;
+}
+
+.footer-col p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col li {
+    margin-bottom: 12px;
+}
+
+.footer-col a {
+    color: var(--text-secondary);
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.footer-col a:hover {
+    color: var(--primary-light);
+    transform: translateX(5px);
+}
+
+.footer-bottom {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.footer-bottom-links {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.footer-bottom-links a {
+    color: var(--text-muted);
+    transition: var(--transition);
+}
+
+.footer-bottom-links a:hover {
+    color: var(--primary-light);
+}
+
+@media (max-width: 992px) {
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 48px 0 24px;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-bottom-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+}
