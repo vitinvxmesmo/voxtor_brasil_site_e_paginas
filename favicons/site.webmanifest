@@ -1,0 +1,21 @@
+{
+  "name": "VOXTOR BRASIL",
+  "short_name": "VOXTOR",
+  "icons": [
+    {
+      "src": "/C:\\Users\\TI-16111\\Documents\\Sites\\voxtor_site_2\\favicons\\favicon_logo.png/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/C:\\Users\\TI-16111\\Documents\\Sites\\voxtor_site_2\\favicons\\favicon_logo.png/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "theme_color": "#222222",
+  "background_color": "#161616",
+  "display": "standalone"
+}
